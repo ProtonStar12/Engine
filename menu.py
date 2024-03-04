@@ -2,6 +2,7 @@
 
 from simple_term_menu import TerminalMenu
 from newton_rapshon_method import newton_raphson
+from composite_trapezoidal import integrate_equation
 
 
 def add_numbers():
@@ -36,7 +37,15 @@ def divide_numbers():
 
 
 def main():
-    menu_items = ["Add", "Subtract", "Multiply", "Divide", "Newton-Raphson", "Exit"]
+    menu_items = [
+        "Add",
+        "Subtract",
+        "Multiply",
+        "Divide",
+        "Newton-Raphson",
+        "Composite-Trapezoidal",
+        "Exit",
+    ]
     menu = TerminalMenu(menu_items)
 
     while True:
@@ -55,9 +64,18 @@ def main():
             iterations = int(input("Enter number of iterations: "))
             newton_raphson(equation_str, x0, iterations)
         elif selected_index == 5:
+            a = float(input("Enter the value of a : "))
+            b = float(input("Enter the value of b :"))
+            equation = input("Enter the equation: ")
+            n_values_str = input(
+                "Enter the list of values for n separated by commas : "
+            )
+            n_values = [int(value) for value in n_values_str.split(",")]
+            integrate_equation(a, b, equation, n_values)
+        elif selected_index == 6:
+
             break
 
 
 if __name__ == "__main__":
     main()
-
