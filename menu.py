@@ -4,6 +4,8 @@ from simple_term_menu import TerminalMenu
 from newton_rapshon_method import newton_raphson
 from composite_trapezoidal import integrate_equation
 from composite_simpson import integrate_simpson
+from romberg_one import rhomberg_trapezoidal
+from romberg_two import rhomberg_simpson
 
 
 def add_numbers():
@@ -37,6 +39,36 @@ def divide_numbers():
         print("The result of division is:", result)
 
 
+def rhomberg():
+    menu_items = ["Trapezoidal", "Simpson", "Back"]
+    menu = TerminalMenu(menu_items)
+
+    while True:
+        selected_index = menu.show()
+        if selected_index == 0:
+            n_values = list(
+                map(
+                    float,
+                    input("Enter the value of I separated by commas : ")
+                    .strip()
+                    .split(","),
+                )
+            )
+            rhomberg_trapezoidal(n_values)
+        if selected_index == 1:
+            n_values = list(
+                map(
+                    float,
+                    input("Enter the value of I separated by commas : ")
+                    .strip()
+                    .split(","),
+                )
+            )
+            rhomberg_simpson(n_values)
+        if selected_index == 2:
+            break
+
+
 def main():
     menu_items = [
         "Add",
@@ -46,6 +78,7 @@ def main():
         "Newton-Raphson",
         "Composite-Trapezoidal",
         "Composite-Simpson",
+        "Rhomberg",
         "Exit",
     ]
     menu = TerminalMenu(menu_items)
@@ -89,6 +122,8 @@ def main():
             integrate_simpson(a, b, equation, n_values)
 
         elif selected_index == 7:
+            rhomberg()
+        elif selected_index == 8:
             break
 
 
