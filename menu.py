@@ -69,7 +69,16 @@ def rhomberg():
             break
 
 
+def header(filename):
+    with open(filename, "r") as f:
+        ascii_art = f.read()
+        print(ascii_art)
+
+
 def main():
+
+    header("Engine.txt")
+
     menu_items = [
         "Add",
         "Subtract",
