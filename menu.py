@@ -3,6 +3,7 @@
 from simple_term_menu import TerminalMenu
 from newton_rapshon_method import newton_raphson
 from composite_trapezoidal import integrate_equation
+from composite_simpson import integrate_simpson
 
 
 def add_numbers():
@@ -44,6 +45,7 @@ def main():
         "Divide",
         "Newton-Raphson",
         "Composite-Trapezoidal",
+        "Composite-Simpson",
         "Exit",
     ]
     menu = TerminalMenu(menu_items)
@@ -73,7 +75,20 @@ def main():
             n_values = [int(value) for value in n_values_str.split(",")]
             integrate_equation(a, b, equation, n_values)
         elif selected_index == 6:
+            a = float(input("Enter the value of a : "))
+            b = float(input("Enter the value of b : "))
+            equation = input("Enter the equation : ")
+            n_values = list(
+                map(
+                    int,
+                    input("Enter the values of N separated by commas : ")
+                    .strip()
+                    .split(","),
+                )
+            )
+            integrate_simpson(a, b, equation, n_values)
 
+        elif selected_index == 7:
             break
 
 
