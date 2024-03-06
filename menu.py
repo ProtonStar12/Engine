@@ -1,5 +1,5 @@
 # main_script.py
-
+import os
 from simple_term_menu import TerminalMenu
 from newton_rapshon_method import newton_raphson
 from composite_trapezoidal import integrate_equation
@@ -136,6 +136,10 @@ def taylor_menu():
             break
 
 
+def clear_menu():
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 def header(filename):
     with open(filename, "r") as f:
         ascii_art = f.read()
@@ -205,6 +209,7 @@ def main():
             taylor_menu()
         elif selected_index == 9:
             break
+    clear_menu()
 
 
 if __name__ == "__main__":
