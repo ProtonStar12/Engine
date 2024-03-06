@@ -7,6 +7,9 @@ from composite_simpson import integrate_simpson
 from romberg_one import rhomberg_trapezoidal
 from romberg_two import rhomberg_simpson
 from euler import euler_method
+from backward_euler import backward_euler_method
+from modified_euler import modified_euler_method
+from cauchy_euler import heuns_method
 
 
 def add_numbers():
@@ -78,6 +81,7 @@ def euler_menu():
         "Fourth-Order",
         "Backward",
         "Modified",
+        "Cauchy",
         "Back",
     ]
     menu = TerminalMenu(menu_items)
@@ -97,10 +101,24 @@ def euler_menu():
         elif selected_index == 3:
             print("hi")
         elif selected_index == 4:
-            print("hi")
+            initial_y = float(input("Enter the value of y(0) : "))
+            h_value = float(input("Enter the value of h : "))
+            end_point = float(input("Enter the end point : "))
+            f = input("Enter the equation : ")
+            backward_euler_method(initial_y, h_value, end_point, f)
         elif selected_index == 5:
-            print("hi")
+            initial_y = float(input("Enter the value of y(0) : "))
+            h_value = float(input("Enter the value of h : "))
+            end_point = float(input("Enter the end point : "))
+            f = input("Enter the equation : ")
+            modified_euler_method(initial_y, h_value, end_point, f)
         elif selected_index == 6:
+            initial_y = float(input("Enter the value of y(0) : "))
+            h_value = float(input("Enter the value of h : "))
+            end_point = float(input("Enter the end point : "))
+            f = input("Enter the equation : ")
+            heuns_method(initial_y, h_value, end_point, f)
+        elif selected_index == 7:
             break
 
 
