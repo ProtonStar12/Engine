@@ -118,7 +118,16 @@ def taylor_menu():
             break
 
 
+def header(filename):
+    with open(filename, "r") as f:
+        ascii_art = f.read()
+        print(ascii_art)
+
+
 def main():
+
+    header("Engine.txt")
+
     menu_items = [
         "Add",
         "Subtract",
@@ -153,7 +162,8 @@ def main():
             b = float(input("enter the value of b : "))
             equation = input("enter the equation: ")
             n_values_str = input(
-                "Enter the list of values for n separated by commas: ")
+                "Enter the list of values for n separated by commas : "
+            )
             n_values = [int(value) for value in n_values_str.split(",")]
             integrate_equation(
                 a, b, equation, n_values
