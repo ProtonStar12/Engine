@@ -6,6 +6,7 @@ from composite_trapezoidal import integrate_equation
 from composite_simpson import integrate_simpson
 from romberg_one import rhomberg_trapezoidal
 from romberg_two import rhomberg_simpson
+from euler import euler_method
 
 
 def add_numbers():
@@ -39,8 +40,8 @@ def divide_numbers():
         print("The result of division is:", result)
 
 
-def rhomberg():
-    menu_items = ["Trapezoidal", "Simpson", "Back"]
+def rhomberg_option():
+    menu_items = ["Trapezoidal", "Simpson", "Exit"]
     menu = TerminalMenu(menu_items)
 
     while True:
@@ -49,36 +50,75 @@ def rhomberg():
             n_values = list(
                 map(
                     float,
-                    input("Enter the value of I separated by commas : ")
+                    input("Enter the values of I separated by commas : ")
                     .strip()
                     .split(","),
                 )
             )
             rhomberg_trapezoidal(n_values)
-        if selected_index == 1:
+        elif selected_index == 1:
             n_values = list(
                 map(
                     float,
-                    input("Enter the value of I separated by commas : ")
+                    input("Enter the vales of I separated by commas : ")
                     .strip()
                     .split(","),
                 )
             )
             rhomberg_simpson(n_values)
-        if selected_index == 2:
+        elif selected_index == 2:
             break
 
 
-def header(filename):
-    with open(filename, "r") as f:
-        ascii_art = f.read()
-        print(ascii_art)
+def euler_menu():
+    menu_items = [
+        "First-Order",
+        "Second-Order",
+        "Third-Order",
+        "Fourth-Order",
+        "Backward",
+        "Modified",
+        "Back",
+    ]
+    menu = TerminalMenu(menu_items)
+
+    while True:
+        selected_index = menu.show()
+        if selected_index == 0:
+            f = input("Enter the equation : ")
+            initial_y = float(input("Enter the initial value of y (y0): "))
+            h_value = float(input("Enter the value of h: "))
+            end_point = float(input("Enter the end point (x-value): "))
+            euler_method(initial_y, h_value, end_point, f)
+        elif selected_index == 1:
+            print("hi")
+        elif selected_index == 2:
+            print("hi")
+        elif selected_index == 3:
+            print("hi")
+        elif selected_index == 4:
+            print("hi")
+        elif selected_index == 5:
+            print("hi")
+        elif selected_index == 6:
+            break
+
+
+def taylor_menu():
+    menu_items = ["Euler", "Range-Kutta", "Back"]
+    menu = TerminalMenu(menu_items)
+
+    while True:
+        selected_index = menu.show()
+        if selected_index == 0:
+            euler_menu()
+        elif selected_index == 1:
+            print("hi")
+        elif selected_index == 2:
+            break
 
 
 def main():
-
-    header("Engine.txt")
-
     menu_items = [
         "Add",
         "Subtract",
@@ -88,6 +128,7 @@ def main():
         "Composite-Trapezoidal",
         "Composite-Simpson",
         "Rhomberg",
+        "Diff-Equation",
         "Exit",
     ]
     menu = TerminalMenu(menu_items)
@@ -108,31 +149,33 @@ def main():
             iterations = int(input("Enter number of iterations: "))
             newton_raphson(equation_str, x0, iterations)
         elif selected_index == 5:
-            a = float(input("Enter the value of a : "))
-            b = float(input("Enter the value of b :"))
-            equation = input("Enter the equation: ")
+            a = float(input("enter the value of a : "))
+            b = float(input("enter the value of b : "))
+            equation = input("enter the equation: ")
             n_values_str = input(
-                "Enter the list of values for n separated by commas : "
-            )
+                "Enter the list of values for n separated by commas: ")
             n_values = [int(value) for value in n_values_str.split(",")]
-            integrate_equation(a, b, equation, n_values)
+            integrate_equation(
+                a, b, equation, n_values
+            )  # Call your function for integrating equations
         elif selected_index == 6:
-            a = float(input("Enter the value of a : "))
-            b = float(input("Enter the value of b : "))
-            equation = input("Enter the equation : ")
+            a = float(input("enter value of a : "))
+            b = float(input("enter value of b : "))
+            equation = input("enter the equation : ")
             n_values = list(
                 map(
                     int,
-                    input("Enter the values of N separated by commas : ")
+                    input("enter the values of N separated by ',' : ")
                     .strip()
                     .split(","),
                 )
             )
             integrate_simpson(a, b, equation, n_values)
-
         elif selected_index == 7:
-            rhomberg()
+            rhomberg_option()
         elif selected_index == 8:
+            taylor_menu()
+        elif selected_index == 9:
             break
 
 
