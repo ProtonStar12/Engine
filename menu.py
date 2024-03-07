@@ -10,6 +10,7 @@ from methods.euler import euler_method
 from methods.backward_euler import backward_euler_method
 from methods.modified_euler import modified_euler_method
 from methods.cauchy_euler import heuns_method
+from methods.range_kutta import range_kutta_method
 
 
 def add_numbers():
@@ -131,7 +132,14 @@ def taylor_menu():
         if selected_index == 0:
             euler_menu()
         elif selected_index == 1:
-            print("hi")
+            f = input("Enter the equation y' = ")
+            initial_y = float(input("Enter the value of y(0) : "))
+            h_value = float(input("Enter the value of h : "))
+            end_point = float(input("Enter the value of end 'x-point' : "))
+            decimal_points = int(
+                input("Enter the value of decimals you want : "))
+            range_kutta_method(initial_y, h_value,
+                               end_point, f, decimal_points)
         elif selected_index == 2:
             break
 
