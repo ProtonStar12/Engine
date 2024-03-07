@@ -1,5 +1,6 @@
 # main_script.py
 import os
+import sympy as sp
 from simple_term_menu import TerminalMenu
 from methods.newton_rapshon_method import newton_raphson
 from methods.composite_trapezoidal import integrate_equation
@@ -11,6 +12,7 @@ from methods.backward_euler import backward_euler_method
 from methods.modified_euler import modified_euler_method
 from methods.cauchy_euler import heuns_method
 from methods.range_kutta import range_kutta_method
+from methods.gauss_seidal import gauss_seidal_method, take_matrix_input
 
 
 def add_numbers():
@@ -144,6 +146,34 @@ def taylor_menu():
             break
 
 
+def matrix():
+    menu_items = ["Seidal", "Jacobi", "Power","Back"]
+    menu = TerminalMenu(menu_items)
+
+    while True:
+        selected_index = menu.show()
+        if selected_index == 0:
+            decimals = int(input("Enter the number of decimals: "))
+            rows_A = int(input("Enter the number of rows for matrix A: "))
+            cols_A = int(input("Enter the number of columns for matrix A: "))
+            matrix_input_A = take_matrix_input(rows_A, cols_A, decimals)
+            rows_B = int(input("Enter the number of rows for matrix B: "))
+            cols_B = int(input("Enter the number of columns for matrix B: "))
+            matrix_input_B = take_matrix_input(rows_B, cols_B, decimals)
+            matrix_input_X0 = take_matrix_input(rows_B, cols_B, decimals)
+            iterations = int(input("Enter the number of iterations : "))
+            result = gauss_seidal_method(
+                matrix_input_A, matrix_input_B, matrix_input_X0, iterations, decimals)
+            print("Final Result (X_final):")
+            sp.pprint(result)
+        elif selected_index == 1:
+            print("under work")
+        elif selected_index == 2:
+            print("under work")
+        elif selected_index == 3:
+            break
+                
+
 def clear_menu():
     os.system("cls" if os.name == "nt" else "clear")
 
@@ -168,6 +198,7 @@ def main():
         "Composite-Simpson",
         "Rhomberg",
         "Diff-Equation",
+        "Matrix-Methods",
         "Exit",
     ]
     menu = TerminalMenu(menu_items)
@@ -216,6 +247,8 @@ def main():
         elif selected_index == 8:
             taylor_menu()
         elif selected_index == 9:
+            matrix()
+        elif selected_index == 10:
             break
     clear_menu()
 
