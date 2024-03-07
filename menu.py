@@ -1,15 +1,15 @@
 # main_script.py
 import os
 from simple_term_menu import TerminalMenu
-from newton_rapshon_method import newton_raphson
-from composite_trapezoidal import integrate_equation
-from composite_simpson import integrate_simpson
-from romberg_one import rhomberg_trapezoidal
-from romberg_two import rhomberg_simpson
-from euler import euler_method
-from backward_euler import backward_euler_method
-from modified_euler import modified_euler_method
-from cauchy_euler import heuns_method
+from methods.newton_rapshon_method import newton_raphson
+from methods.composite_trapezoidal import integrate_equation
+from methods.composite_simpson import integrate_simpson
+from methods.romberg_one import rhomberg_trapezoidal
+from methods.romberg_two import rhomberg_simpson
+from methods.euler import euler_method
+from methods.backward_euler import backward_euler_method
+from methods.modified_euler import modified_euler_method
+from methods.cauchy_euler import heuns_method
 
 
 def add_numbers():
