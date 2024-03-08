@@ -13,6 +13,7 @@ from methods.modified_euler import modified_euler_method
 from methods.cauchy_euler import heuns_method
 from methods.range_kutta import range_kutta_method
 from methods.gauss_seidal import gauss_seidal_method, take_matrix_input
+from methods.regula_falsi import regula_falsi_method
 
 
 def add_numbers():
@@ -98,11 +99,11 @@ def euler_menu():
             end_point = float(input("Enter the end point (x-value): "))
             euler_method(initial_y, h_value, end_point, f)
         elif selected_index == 1:
-            print("hi")
+            print("under work")
         elif selected_index == 2:
-            print("hi")
+            print("under work")
         elif selected_index == 3:
-            print("hi")
+            print("under work")
         elif selected_index == 4:
             initial_y = float(input("Enter the value of y(0) : "))
             h_value = float(input("Enter the value of h : "))
@@ -147,7 +148,7 @@ def taylor_menu():
 
 
 def matrix():
-    menu_items = ["Seidal", "Jacobi", "Power","Back"]
+    menu_items = ["Seidal", "Jacobi", "Power", "Back"]
     menu = TerminalMenu(menu_items)
 
     while True:
@@ -172,7 +173,7 @@ def matrix():
             print("under work")
         elif selected_index == 3:
             break
-                
+
 
 def clear_menu():
     os.system("cls" if os.name == "nt" else "clear")
@@ -193,6 +194,7 @@ def main():
         "Subtract",
         "Multiply",
         "Divide",
+        "Regula-Falsi",
         "Newton-Raphson",
         "Composite-Trapezoidal",
         "Composite-Simpson",
@@ -214,11 +216,17 @@ def main():
         elif selected_index == 3:
             divide_numbers()
         elif selected_index == 4:
+            equation_str = input("Enter the equation: ")
+            iterations = int(input("Enter the number of iterations: "))
+            decimals = int(
+                input("Enter the number of decimal points to disply: "))
+            regula_falsi_method(equation_str, iterations, decimals)
+        elif selected_index == 5:
             equation_str = input("Enter the equation (in terms of 'x'): ")
             x0 = float(input("Enter initial guess: "))
             iterations = int(input("Enter number of iterations: "))
             newton_raphson(equation_str, x0, iterations)
-        elif selected_index == 5:
+        elif selected_index == 6:
             a = float(input("enter the value of a : "))
             b = float(input("enter the value of b : "))
             equation = input("enter the equation: ")
@@ -229,7 +237,7 @@ def main():
             integrate_equation(
                 a, b, equation, n_values
             )  # Call your function for integrating equations
-        elif selected_index == 6:
+        elif selected_index == 7:
             a = float(input("enter value of a : "))
             b = float(input("enter value of b : "))
             equation = input("enter the equation : ")
@@ -242,13 +250,13 @@ def main():
                 )
             )
             integrate_simpson(a, b, equation, n_values)
-        elif selected_index == 7:
-            rhomberg_option()
         elif selected_index == 8:
-            taylor_menu()
+            rhomberg_option()
         elif selected_index == 9:
-            matrix()
+            taylor_menu()
         elif selected_index == 10:
+            matrix()
+        elif selected_index == 11:
             break
     clear_menu()
 

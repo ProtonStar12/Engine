@@ -2,7 +2,7 @@ import sympy as sp
 import numpy as np
 
 
-def regula_falsi_method(func, a, b, tol=1e-6, max_iter=100, decimals=6):
+def regular_falsi(func, a, b, tol=1e-6, max_iter=100, decimals=6):
     """
     Regular Falsi method to find root of a function.
 
@@ -48,7 +48,7 @@ def regula_falsi_method(func, a, b, tol=1e-6, max_iter=100, decimals=6):
     return (a + b) / 2
 
 
-def regular_falsi_solver(equation_str, iterations, decimals):
+def regula_falsi_method(equation_str, iterations, decimals):
     # Convert the equation string to a SymPy equation
     x = sp.symbols('x')
     equation = sp.sympify(equation_str)
@@ -76,4 +76,7 @@ def regular_falsi_solver(equation_str, iterations, decimals):
     a, b = initial_points[0]
 
     # Find the root using Regular Falsi method
-    regula_falsi_method(f, a, b, max_iter=iterations, decimals=decimals)
+    regular_falsi(f, a, b, max_iter=iterations, decimals=decimals)
+
+# Example usage
+
