@@ -174,6 +174,44 @@ def matrix():
         elif selected_index == 3:
             break
 
+def interation():
+    menu_items = ["Composite-Trapezoidal","Composite-Simpson","Rhomberg","Back"]
+    menu = TerminalMenu(menu_items)
+    
+    while True:
+        selected_index = menu.show()
+        if selected_index == 0:
+            a = float(input("enter the value of a : "))
+            b = float(input("enter the value of b : "))
+            equation = input("enter the equation: ")
+            n_values_str = input(
+                "Enter the list of values for n separated by commas : "
+            )
+            n_values = [int(value) for value in n_values_str.split(",")]
+            integrate_equation(
+                a, b, equation, n_values
+            )  # Call your function for integrating equations
+        elif selected_index == 1:
+            a = float(input("enter value of a : "))
+            b = float(input("enter value of b : "))
+            equation = input("enter the equation : ")
+            n_values = list(
+                map(
+                    int,
+                    input("enter the values of N separated by ',' : ")
+                    .strip()
+                    .split(","),
+                )
+            )
+            integrate_simpson(a, b, equation, n_values)
+        elif selected_index == 2:
+            rhomberg_option()
+        elif selected_index == 3:
+            break
+            
+            
+        
+        
 
 def clear_menu():
     os.system("cls" if os.name == "nt" else "clear")
@@ -196,9 +234,7 @@ def main():
         "Divide",
         "Regula-Falsi",
         "Newton-Raphson",
-        "Composite-Trapezoidal",
-        "Composite-Simpson",
-        "Rhomberg",
+        "Integration-Methods",
         "Diff-Equation",
         "Matrix-Methods",
         "Exit",
@@ -227,36 +263,13 @@ def main():
             iterations = int(input("Enter number of iterations: "))
             newton_raphson(equation_str, x0, iterations)
         elif selected_index == 6:
-            a = float(input("enter the value of a : "))
-            b = float(input("enter the value of b : "))
-            equation = input("enter the equation: ")
-            n_values_str = input(
-                "Enter the list of values for n separated by commas : "
-            )
-            n_values = [int(value) for value in n_values_str.split(",")]
-            integrate_equation(
-                a, b, equation, n_values
-            )  # Call your function for integrating equations
+            interation()
+   
         elif selected_index == 7:
-            a = float(input("enter value of a : "))
-            b = float(input("enter value of b : "))
-            equation = input("enter the equation : ")
-            n_values = list(
-                map(
-                    int,
-                    input("enter the values of N separated by ',' : ")
-                    .strip()
-                    .split(","),
-                )
-            )
-            integrate_simpson(a, b, equation, n_values)
-        elif selected_index == 8:
-            rhomberg_option()
-        elif selected_index == 9:
             taylor_menu()
-        elif selected_index == 10:
+        elif selected_index == 8:
             matrix()
-        elif selected_index == 11:
+        elif selected_index == 9:
             break
     clear_menu()
 
