@@ -39,7 +39,8 @@ def regular_falsi(func, a, b, tol=1e-6, max_iter=100, decimals=6):
             a = c
 
         # Print the value of x at each iteration with the specified number of decimals
-        print(f"Iteration {iteration + 1}: x = {c:.{decimals}f}")
+        print(f"Iteration {iteration +
+              1}: x{iteration + 2} = {c:.{decimals}f}")
 
         # Update interval width and iteration counter
         interval_width = abs(b - a)
@@ -79,4 +80,3 @@ def regula_falsi_method(equation_str, iterations, decimals):
     regular_falsi(f, a, b, max_iter=iterations, decimals=decimals)
 
 # Example usage
-

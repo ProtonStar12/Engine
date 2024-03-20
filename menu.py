@@ -174,10 +174,12 @@ def matrix():
         elif selected_index == 3:
             break
 
+
 def interation():
-    menu_items = ["Composite-Trapezoidal","Composite-Simpson","Rhomberg","Back"]
+    menu_items = ["Composite-Trapezoidal",
+                  "Composite-Simpson", "Rhomberg", "Back"]
     menu = TerminalMenu(menu_items)
-    
+
     while True:
         selected_index = menu.show()
         if selected_index == 0:
@@ -208,10 +210,7 @@ def interation():
             rhomberg_option()
         elif selected_index == 3:
             break
-            
-            
-        
-        
+
 
 def clear_menu():
     os.system("cls" if os.name == "nt" else "clear")
@@ -255,7 +254,7 @@ def main():
             equation_str = input("Enter the equation: ")
             iterations = int(input("Enter the number of iterations: "))
             decimals = int(
-                input("Enter the number of decimal points to disply: "))
+                input("Enter the number of decimal points to display: "))
             regula_falsi_method(equation_str, iterations, decimals)
         elif selected_index == 5:
             equation_str = input("Enter the equation (in terms of 'x'): ")
@@ -264,7 +263,7 @@ def main():
             newton_raphson(equation_str, x0, iterations)
         elif selected_index == 6:
             interation()
-   
+
         elif selected_index == 7:
             taylor_menu()
         elif selected_index == 8:
