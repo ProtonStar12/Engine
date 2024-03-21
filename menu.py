@@ -57,7 +57,7 @@ def rhomberg_option():
             n_values = list(
                 map(
                     float,
-                    input("Enter the values of I separated by commas : ")
+                    input("Enter the values of I separated by ',' : ")
                     .strip()
                     .split(","),
                 )
@@ -67,7 +67,7 @@ def rhomberg_option():
             n_values = list(
                 map(
                     float,
-                    input("Enter the vales of I separated by commas : ")
+                    input("Enter the values of I separated by ',' : ")
                     .strip()
                     .split(","),
                 )
@@ -185,9 +185,9 @@ def interation():
         if selected_index == 0:
             a = float(input("enter the value of a : "))
             b = float(input("enter the value of b : "))
-            equation = input("enter the equation: ")
+            equation = input("enter the equation : ")
             n_values_str = input(
-                "Enter the list of values for n separated by commas : "
+                "Enter the list of values for n separated by ',' : "
             )
             n_values = [int(value) for value in n_values_str.split(",")]
             integrate_equation(
