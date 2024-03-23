@@ -12,11 +12,9 @@ from methods.backward_euler import backward_euler_method
 from methods.modified_euler import modified_euler_method
 from methods.cauchy_euler import heuns_method
 from methods.range_kutta import range_kutta_method
-from methods.gauss_seidal import gauss_seidal_method, take_matrix_input
+from methods.gauss_seidal import gauss_seidal_method, take_matrix_input_seidal
 from methods.regula_falsi import regula_falsi_method
-from methods.gauss_jacobi import take_matrix_input, jacobi_method
-
-
+from methods.power import take_matrix_input, calculate_eigenvalues
 def add_numbers():
     num1 = float(input("Enter the first number: "))
     num2 = float(input("Enter the second number: "))
@@ -158,11 +156,11 @@ def matrix():
             decimals = int(input("Enter the number of decimals: "))
             rows_A = int(input("Enter the number of rows for matrix A: "))
             cols_A = int(input("Enter the number of columns for matrix A: "))
-            matrix_input_A = take_matrix_input(rows_A, cols_A, decimals)
+            matrix_input_A = take_matrix_input_seidal(rows_A, cols_A, decimals)
             rows_B = int(input("Enter the number of rows for matrix B: "))
             cols_B = int(input("Enter the number of columns for matrix B: "))
-            matrix_input_B = take_matrix_input(rows_B, cols_B, decimals)
-            matrix_input_X0 = take_matrix_input(rows_B, cols_B, decimals)
+            matrix_input_B = take_matrix_input_seidal(rows_B, cols_B, decimals)
+            matrix_input_X0 = take_matrix_input_seidal(rows_B, cols_B, decimals)
             iterations = int(input("Enter the number of iterations : "))
             result = gauss_seidal_method(
                 matrix_input_A, matrix_input_B, matrix_input_X0, iterations, decimals)
@@ -187,7 +185,16 @@ def matrix():
             jacobi_method(matrix_input1, matrix_input2, x0, iterations)
 
         elif selected_index == 2:
-            print("under work")
+            decimals = int(input("Enter the number of decimals to consider: "))
+
+            rows1 = int(input("Enter the number of rows for matrix A: "))
+            cols1 = int(input("Enter the number of columns for matrix A: "))
+            matrix_input1 = take_matrix_input(rows1, cols1)
+
+            rows2 = int(input("Enter the number of rows of X0: "))
+            cols2 = int(input("Enter the number of columns of X0: "))
+            X0 = take_matrix_input(rows2, cols2)
+            calculate_eigenvalues(matrix_input1, X0, decimals)
         elif selected_index == 3:
             break
 
