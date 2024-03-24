@@ -3,7 +3,7 @@ import sympy as sp
 # Function to take matrix input
 
 
-def take_matrix_input(rows, cols, decimals):
+def take_matrix_input_seidal(rows, cols, decimals):
     # Initializing an empty matrix
     matrix = sp.zeros(rows, cols)
 

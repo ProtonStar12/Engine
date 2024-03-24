@@ -19,7 +19,7 @@ def jacobi_method(matrix_input1, matrix_input2, x0, iteration):
         
     return X_next
     
-def take_matrix_input(rows, cols):
+def take_matrix_input_jacobi(rows, cols):
     matrix = sp.zeros(rows, cols)
     
     print("Enter the matrix elements row by row : ")

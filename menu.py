@@ -15,6 +15,7 @@ from methods.range_kutta import range_kutta_method
 from methods.gauss_seidal import gauss_seidal_method, take_matrix_input_seidal
 from methods.regula_falsi import regula_falsi_method
 from methods.power import take_matrix_input, calculate_eigenvalues
+from methods.gauss_jacobi import jacobi_method,take_matrix_input_jacobi
 def add_numbers():
     num1 = float(input("Enter the first number: "))
     num2 = float(input("Enter the second number: "))
@@ -169,16 +170,16 @@ def matrix():
         elif selected_index == 1:
             rows1 = int(input("Enter the number of rows for matrix A : "))
             cols1 = int(input("Enter the number of columns for matrix A : "))
-            matrix_input1 = take_matrix_input(rows1, cols1)
+            matrix_input1 = take_matrix_input_jacobi(rows1, cols1)
 
             rows2 = int(input("Enter the number of rows for matrix B : "))
             cols2 = int(input("Enter the number of columns for matrix B : "))
-            matrix_input2 = take_matrix_input(rows2, cols2)
+            matrix_input2 = take_matrix_input_jacobi(rows2, cols2)
 
             rows_x0 = rows2
             cols_x0 = 1
             print("for intitial values x0 ")
-            x0 = take_matrix_input(rows_x0, cols_x0)
+            x0 = take_matrix_input_jacobi(rows_x0, cols_x0)
 
             iterations = int(input("Enter the number of iterations : "))
 
